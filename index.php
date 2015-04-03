@@ -23,36 +23,26 @@ foreach($puertos as $key=>$puerto){
 <script>
 $(document).ready(function(){
     $('.on').click(function(){
-        $.ajax({
-           url : "exec.php",
-           type: "POST",
-           data : {puerto : pad($(this).attr('id'),2), comando : "on" },
-           dataType:'json',
-           success: function(data)
-           {
-                console.log(data);
-                //data - response from server
-           }
-        });
+        _executeCmd($(this).attr('id'), "on");
     });
 
     $('.off').click(function(){
+        _executeCmd($(this).attr('id'), "off");
+    });
+    
+    function _executeCmd(port, cmd){
         $.ajax({
            url : "exec.php",
            type: "POST",
-           data : {puerto : pad($(this).attr('id'),2), comando : "off" },
+           data : { port : port, cmd : cmd },
            dataType:'json',
            success: function(data)
            {
                 console.log(data);
                 //data - response from server
            }
-        });
-    })
+        });    
+    }
+    
 });
-
-function pad (str, max) {
-  str = str.toString();
-  return str.length < max ? pad("0" + str, max) : str;
-}
 </script>

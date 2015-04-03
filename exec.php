@@ -1,10 +1,11 @@
 <?php
-if(isset($_POST['puerto']) && isset($_POST['comando'])){
-        $puerto = intval($_POST['puerto']);
-        $comando = $_POST['comando'];
-        /*$retorno = exec('sudo python /home/pi/domotica/command.py ' . $puerto . ' ' . $comando , $output);
-        echo json_encode($output);*/
-        echo json_encode($comando);
+if(isset($_POST['port']) && isset($_POST['cmd'])){
+        $port = intval($_POST['port']);
+        $cmd = $_POST['cmd'];
+        $return = exec('sudo python /home/pi/domotica/command.py ' . $port . ' ' . $cmd , $output);
+    
+        echo json_encode($output);
+        //echo json_encode($port);
 }
 
 ?>
