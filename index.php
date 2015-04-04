@@ -5,11 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Home Automated V0.1</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <style>
+    body {
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }  
+    </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,6 +25,7 @@
     <![endif]-->
   </head>
   <body>
+      <div  class="container">
         <?php
 
         $host = 'localhost';
@@ -59,35 +66,36 @@
         $mysqli->close();
 
         ?>
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script>
-        $(document).ready(function(){
-            $('.on').click(function(){
-                _executeCmd($(this).attr('id'), "on");
-                $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
-            });
+      </div>
+      <script src="js/jquery.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script>
+      $(document).ready(function(){
+          $('.on').click(function(){
+              _executeCmd($(this).attr('id'), "on");
+              $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
+          });
 
-            $('.off').click(function(){
-                _executeCmd($(this).attr('id'), "off");
-                $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-            });
+          $('.off').click(function(){
+              _executeCmd($(this).attr('id'), "off");
+              $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
+          });
 
-            function _executeCmd(port, cmd){
-                $.ajax({
-                   url : "exec.php",
-                   type: "POST",
-                   data : { port : port, cmd : cmd },
-                   dataType:'json',
-                   success: function(data)
-                   {
-                        console.log(data);
-                        //data - response from server
-                   }
-                });    
-            }
+          function _executeCmd(port, cmd){
+              $.ajax({
+                 url : "exec.php",
+                 type: "POST",
+                 data : { port : port, cmd : cmd },
+                 dataType:'json',
+                 success: function(data)
+                 {
+                      console.log(data);
+                      //data - response from server
+                 }
+              });    
+          }
 
-        });
-        </script>
+      });
+      </script>
     </body>
 </html>
