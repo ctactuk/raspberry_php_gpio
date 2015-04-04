@@ -13,9 +13,24 @@ $puertos = array(
         "Puerto 7" => 27,
         "Puerto 8" => 22
 );
+$host = '104.131.91.98';
+$username = 'root';
+$password = 'carlos2359';
+$database = 'myhome';
 
+$mysqli = new mysqli($host,$username,$password,$database);
+
+if ($mysqli->connect_error) {
+    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+}
+
+//MySqli Select Query
+$results = $mysqli->query("SELECT id, nombre, puerto, encendido FROM puerto where activo = 1");
+
+if( !$results)
+  die($mysqli->error);
 echo '<div class="row">';
-foreach($puertos as $key=>$puerto){
+while($row = $results->fetch_object()) {
     /*echo "{$key} &nbsp;&nbsp;";
     echo '<button type="button" class="on btn btn-success" id="'.$puerto.'"/>ON</button>&nbsp;&nbsp;';
     echo '<button type="button" class="off btn btn-danger" id="'.$puerto.'"/>OFF</button><br/><br/>';*/
@@ -24,10 +39,10 @@ foreach($puertos as $key=>$puerto){
     echo '
       <div class="col-sm-6 col-md-4" style="width:230px;">
         <div class="thumbnail">
-          <img data-src="holder.js/171x80" alt="171x80" class="'.$puerto.'" src="img/statuson.png" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
+          <img data-src="holder.js/171x80" alt="171x80" class="'.$row->puerto.'" src="img/statuson.png" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
           <div class="caption">
-            <h3 id="thumbnail-label">'.$key.'<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
-            <p><button type="button" class="on btn btn-success" id="'.$puerto.'"/>Encender</button> <button type="button" class="off btn btn-danger" id="'.$puerto.'"/>&nbsp;Apagar&nbsp;</button></p>
+            <h3 id="thumbnail-label">'.$row->nombre.'<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h3>
+            <p><button type="button" class="on btn btn-success" id="'.$row->puerto.'"/>Encender</button> <button type="button" class="off btn btn-danger" id="'.$row->puerto.'"/>&nbsp;Apagar&nbsp;</button></p>
           </div>
         </div>
       </div>
@@ -35,7 +50,15 @@ foreach($puertos as $key=>$puerto){
 
 }
 echo '</div>';
+$results->free();
+
+$mysqli->close();
+
 ?>
+
+
+
+
 
 <script>
 $(document).ready(function(){
