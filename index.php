@@ -54,7 +54,6 @@
                   <div class="caption">
                     <p class="bg-info"><h4 id="thumbnail-label">' . $row->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4></p>
                     <p><input type="checkbox" name="my-checkbox" class="checkboxes" checked id="' . $row->puerto . '></p>
-                    <p><button type="button" class="on btn btn-success"/>Encender</button> <button type="button" class="off btn btn-danger"/>&nbsp;Apagar&nbsp;</button></p>
                   </div>
                 </div>
               </div>
