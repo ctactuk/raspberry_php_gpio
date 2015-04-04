@@ -78,14 +78,13 @@
              if(state){
                  _executeCmd($(this).attr('id'), "on");
                  $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
-                 $(this).blur();
              }else{
-                 _executeCmd($(this).attr('id'), "off");
+                _executeCmd($(this).attr('id'), "off");
                  $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-                 $(this).blur();
              }
             });
-          /*$('.on').click(function(){
+          
+          $('.on').click(function(){
               _executeCmd($(this).attr('id'), "on");
               $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
           });
@@ -93,7 +92,7 @@
           $('.off').click(function(){
               _executeCmd($(this).attr('id'), "off");
               $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-          });*/
+          });
 
           function _executeCmd(port, cmd){
               $.ajax({
