@@ -76,11 +76,15 @@
           $('.checkboxes')
           .bootstrapSwitch()
           .on('switchChange.bootstrapSwitch', function(event, state) {
-              console.log(this); // DOM element
-              console.log(event); // jQuery event
-              console.log(state); // true | false
+             if(state){
+                 _executeCmd($(this).attr('id'), "on");
+                 $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
+             }else{
+                 _executeCmd($(this).attr('id'), "off");
+                 $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
+             }
             });
-          $('.on').click(function(){
+          /*$('.on').click(function(){
               _executeCmd($(this).attr('id'), "on");
               $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
           });
@@ -88,7 +92,7 @@
           $('.off').click(function(){
               _executeCmd($(this).attr('id'), "off");
               $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-          });
+          });*/
 
           function _executeCmd(port, cmd){
               $.ajax({
