@@ -83,10 +83,7 @@
                  $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
              }
             });
-<<<<<<< HEAD
           
-=======
->>>>>>> fb4d2f46245cf1cfaf9749dc79bc0e42c135ba88
           $('.on').click(function(){
               _executeCmd($(this).attr('id'), "on");
               $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
