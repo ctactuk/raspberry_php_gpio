@@ -53,7 +53,7 @@
                   <img data-src="holder.js/171x80" alt="171x80" class="' . $row->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
                   <div class="caption">
                     <p class="bg-info"><h4 id="thumbnail-label">' . $row->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4>
-                    <p><input type="checkbox" name="my-checkbox" class="checkboxes" data-on-text="Encendido" checked></p>
+                    <p><input type="checkbox" name="my-checkbox" class="checkboxes" checked id="' . $row->puerto . '></p>
                     <p><button type="button" class="on btn btn-success" id="' . $row->puerto . '"/>Encender</button> <button type="button" class="off btn btn-danger" id="' . $row->puerto . '"/>&nbsp;Apagar&nbsp;</button></p>
                   </div>
                 </div>
@@ -73,7 +73,13 @@
       <script src="js/bootstrap-switch.min.js"></script>
       <script>
       $(document).ready(function(){
-          $('.checkboxes').bootstrapSwitch();
+          $('.checkboxes')
+          .bootstrapSwitch()
+          .on('switchChange.bootstrapSwitch', function(event, state) {
+              console.log(this); // DOM element
+              console.log(event); // jQuery event
+              console.log(state); // true | false
+            });
           $('.on').click(function(){
               _executeCmd($(this).attr('id'), "on");
               $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
