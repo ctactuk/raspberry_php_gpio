@@ -53,7 +53,7 @@
                   <img data-src="holder.js/171x80" alt="171x80" class="' . $row->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
                   <div class="caption">
                     <p class="bg-info"><h4 id="thumbnail-label">' . $row->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4>
-                    <p><input type="checkbox" name="my-checkbox" class="checkboxes" checked></p>
+                    <p><input type="checkbox" name="my-checkbox" class="checkboxes" style="width: 111px;" checked></p>
                     <p><button type="button" class="on btn btn-success" id="' . $row->puerto . '"/>Encender</button> <button type="button" class="off btn btn-danger" id="' . $row->puerto . '"/>&nbsp;Apagar&nbsp;</button></p>
                   </div>
                 </div>
