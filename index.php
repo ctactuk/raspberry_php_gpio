@@ -54,6 +54,7 @@
                   <div class="caption">
                     <p class="bg-info"><h4 id="thumbnail-label">' . $row->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4>
                     <p><input type="checkbox" name="my-checkbox" class="checkboxes" checked id="' . $row->puerto . '></p>
+                    <p><button type="button" class="on btn btn-success" id="' . $row->puerto . '"/>Encender</button> <button type="button" class="off btn btn-danger" id="' . $row->puerto . '"/>&nbsp;Apagar&nbsp;</button></p>
                   </div>
                 </div>
               </div>
@@ -78,14 +79,12 @@
              if(state){
                  _executeCmd($(this).attr('id'), "on");
                  $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
-                 $(this).blur();
              }else{
-                 _executeCmd($(this).attr('id'), "off");
+                _executeCmd($(this).attr('id'), "off");
                  $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-                 $(this).blur();
              }
             });
-          /*$('.on').click(function(){
+          $('.on').click(function(){
               _executeCmd($(this).attr('id'), "on");
               $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
           });
@@ -93,7 +92,7 @@
           $('.off').click(function(){
               _executeCmd($(this).attr('id'), "off");
               $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-          });*/
+          });
 
           function _executeCmd(port, cmd){
               $.ajax({
