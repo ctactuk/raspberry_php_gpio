@@ -103,7 +103,10 @@
             });
           
           $('.habilitado').click(function(){
-              console.log($(this).attr('puerto'));
+              //if($(this).attr('class') == ""
+                  
+                  //( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
+              console.log($(this).find("span").attr('class'));
           });
 
           function _executeCmd(port, cmd){
