@@ -46,7 +46,7 @@
           die($mysqli->error);
           echo '<div class="row">';
           while($row = $results->fetch_object()) {
-            $disabled = $row->activo == 1 ? '' : 'disabled';
+            $disabled = $row->activo == 0 ? 'disabled' : '';
             $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
             echo '
               <div class="col-sm-6 col-md-4 ' . $disabled . '" style="width:230px;">
