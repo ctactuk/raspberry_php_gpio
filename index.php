@@ -103,10 +103,12 @@
             });
           
           $('.habilitado').click(function(){
-              //if($(this).attr('class') == ""
-                  
-                  //( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
-              console.log($(this).find("span").attr('class'));
+              var elemento = $(this).find("span");
+              if(elemento.attr('class') == 'glyphicon glyphicon-unchecked'){
+                elemento.removeClass( "glyphicon-unchecked" ).addClass( "glyphicon-check" );
+              }else{
+                elemento.removeClass( "glyphicon-check" ).addClass( "glyphicon-unchecked" );
+              }
           });
 
           function _executeCmd(port, cmd){
