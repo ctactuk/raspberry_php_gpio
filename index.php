@@ -40,7 +40,7 @@
             die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
         }
 
-        $results = $mysqli->query("SELECT id, nombre, puerto, encendido, activo FROM puerto");
+        $results = $mysqli->query("SELECT id, nombre, puerto, encendido, activo FROM puerto orde by activo asc");
 
         if( !$results)
           die($mysqli->error);
