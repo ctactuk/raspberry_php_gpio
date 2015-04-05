@@ -53,7 +53,7 @@
             $enabled = $row->activo == 1 ? 'checked' : '';
             $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
             $checked = $row->encendido == 1 ? 'checked' : '';
-            $iconenabled = $row->activo == 1 ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-remove';
+            $iconenabled = $row->activo == 1 ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked';
             
             if($row->activo == 0)
                 $encendido = "img/statusdisabled.png";
