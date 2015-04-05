@@ -62,7 +62,7 @@
               <div class="col-sm-6 col-md-4 ' . $disabled . '" style="width:230px;">
                 <div class="thumbnail">
                   <p>
-                  <div class="checkbox">
+                  <div class="checkbox habilitado" puerto="'.$row->puerto.'">
                       <label>
                       <span class="' . $iconenabled . '" aria-hidden="true"></span>
                       Habilidado
@@ -102,15 +102,9 @@
              }
             });
           
-          /*$('.on').click(function(){
-              _executeCmd($(this).attr('id'), "on");
-              $('.'+$(this).attr('id')).attr("src", "img/statuson.png");
+          $('.habilitado').click(function(){
+              console.log($(this).attr('puerto'));
           });
-
-          $('.off').click(function(){
-              _executeCmd($(this).attr('id'), "off");
-              $('.'+$(this).attr('id')).attr("src", "img/statusoff.png");
-          });*/
 
           function _executeCmd(port, cmd){
               $.ajax({
