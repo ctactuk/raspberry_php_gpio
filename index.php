@@ -40,12 +40,13 @@
             die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
         }
 
-        $results = $mysqli->query("SELECT id, nombre, puerto, encendido FROM puerto");
+        $results = $mysqli->query("SELECT id, nombre, puerto, encendido, activo FROM puerto");
 
         if( !$results)
           die($mysqli->error);
-          echo '<div class="row">';
-          while($row = $results->fetch_object()) {
+
+        echo '<div class="row">';
+        while($row = $results->fetch_object()) {
             $disabled = $row->activo == 0 ? 'disabled' : '';
             $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
             echo '
@@ -59,7 +60,7 @@
                 </div>
               </div>';
 
-          }
+        }
         echo '</div>';
 
         $results->free();
