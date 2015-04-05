@@ -44,7 +44,9 @@
 
         if( !$results)
           die($mysqli->error);
-
+//glyphicon glyphicon-calendar 
+//glyphicon glyphicon-edit
+//glyphicon glyphicon-check
         echo '<div class="row">';
         while($row = $results->fetch_object()) {
             $disabled = $row->activo == 0 ? 'disabled' : '';
@@ -61,8 +63,9 @@
                   <p>
                   <div class="checkbox">
                       <label>
-                        <input type="checkbox" value="" ' . $enabled . '>
-                       Enabled
+                      <input type="checkbox" value="" ' . $enabled . '>
+                      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                      Habilidado
                       </label>
                   </div>
                   </p>
