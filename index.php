@@ -40,15 +40,16 @@
             die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
         }
 
-        $results = $mysqli->query("SELECT id, nombre, puerto, encendido FROM puerto where activo = 1");
+        $results = $mysqli->query("SELECT id, nombre, puerto, encendido FROM puerto");
 
         if( !$results)
           die($mysqli->error);
-        echo '<div class="row">';
-        while($row = $results->fetch_object()) {
+          echo '<div class="row">';
+          while($row = $results->fetch_object()) {
+            $disabled = $row->activo == 1 ? '' : 'disabled';
             $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
             echo '
-              <div class="col-sm-6 col-md-4" style="width:230px;">
+              <div class="col-sm-6 col-md-4 ' . $disabled . '" style="width:230px;">
                 <div class="thumbnail">
                   <img data-src="holder.js/171x80" alt="171x80" class="' . $row->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
                   <div class="caption">
@@ -56,13 +57,12 @@
                     <p><input type="checkbox" name="my-checkbox" class="checkboxes" checked id="' . $row->puerto . '" data-handle-width="60"></p>
                   </div>
                 </div>
-              </div>
-              ';
+              </div>';
 
-        }
+          }
         echo '</div>';
-        $results->free();
 
+        $results->free();
         $mysqli->close();
 
         ?>
