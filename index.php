@@ -53,6 +53,7 @@
             $enabled = $row->activo == 1 ? 'checked' : '';
             $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
             $checked = $row->encendido == 1 ? 'checked' : '';
+            $iconenabled = $row->activo == 1 ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-remove';
             
             if($row->activo == 0)
                 $encendido = "img/statusdisabled.png";
@@ -63,8 +64,7 @@
                   <p>
                   <div class="checkbox">
                       <label>
-                      <input type="checkbox" value="" ' . $enabled . '>
-                      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                      <span class="' . $iconenabled . '" aria-hidden="true"></span>
                       Habilidado
                       </label>
                   </div>
