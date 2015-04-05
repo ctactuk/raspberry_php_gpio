@@ -67,6 +67,7 @@
                       <span class="' . $iconenabled . '" aria-hidden="true"></span>
                       Habilidado
                       </label>
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                   </div>
                   </p>
                   <img data-src="holder.js/171x80" alt="171x80" class="' . $row->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
