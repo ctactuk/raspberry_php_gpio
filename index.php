@@ -49,6 +49,7 @@
         while($row = $results->fetch_object()) {
             $disabled = $row->activo == 0 ? 'disabled' : '';
             $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
+            $checked = $row->encendido == 1 ? 'checked' : '';
             
             if($row->activo == 0)
                 $encendido = "img/statusdisabled.png";
@@ -59,7 +60,7 @@
                   <img data-src="holder.js/171x80" alt="171x80" class="' . $row->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
                   <div class="caption">
                     <p class="bg-info"><h4 id="thumbnail-label">' . $row->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4></p>
-                    <p><input type="checkbox" name="my-checkbox" class="checkboxes ' . $disabled . '" checked id="' . $row->puerto . '" data-handle-width="60" ' . $disabled . '/></p>
+                    <p><input type="checkbox" name="my-checkbox" class="checkboxes ' . $disabled . '" ' . $checked . ' id="' . $row->puerto . '" data-handle-width="60" ' . $disabled . '/></p>
                   </div>
                 </div>
               </div>';
