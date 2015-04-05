@@ -104,10 +104,14 @@
           
           $('.habilitado').click(function(){
               var elemento = $(this).find("span");
+              var imageelement = $(this).parent().parent().find("img");
+              
               if(elemento.attr('class') == 'glyphicon glyphicon-unchecked'){
                 elemento.removeClass( "glyphicon-unchecked" ).addClass( "glyphicon-check" );
+                imageelement.attr("src", "img/statuson.png");
               }else{
                 elemento.removeClass( "glyphicon-check" ).addClass( "glyphicon-unchecked" );
+                imageelement.attr("src", "img/statusdisabled.png");
               }
           });
 
