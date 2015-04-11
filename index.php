@@ -1,3 +1,9 @@
+<?php
+include 'controllers/puerto_controller.php';
+
+$puerto_cl = new puerto();
+$puertos = $puerto_cl->obtenerPuertos();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,59 +35,39 @@
       <div  class="container">
         <?php
 
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'carlos2359';
-        $database = 'myhome';
-
-        $mysqli = new mysqli($host,$username,$password,$database);
-
-        if ($mysqli->connect_error) {
-            die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-        }
-
-        $results = $mysqli->query("SELECT id, nombre, puerto, encendido, activo FROM puerto order by activo desc");
-
-        if( !$results)
-          die($mysqli->error);
-//glyphicon glyphicon-calendar 
-//glyphicon glyphicon-edit
-//glyphicon glyphicon-check
+       
         echo '<div class="row">';
-        while($row = $results->fetch_object()) {
-            $disabled = $row->activo == 0 ? 'disabled' : '';
-            $enabled = $row->activo == 1 ? 'checked' : '';
-            $encendido = $row->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
-            $checked = $row->encendido == 1 ? 'checked' : '';
-            $iconenabled = $row->activo == 1 ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked';
+        foreach($puertos as $puerto) {
+            $disabled = $puerto->activo == 0 ? 'disabled' : '';
+            $enabled = $puerto->activo == 1 ? 'checked' : '';
+            $encendido = $puerto->encendido == 1 ? "img/statuson.png" : "img/statusoff.png";
+            $checked = $puerto->encendido == 1 ? 'checked' : '';
+            $iconenabled = $puerto->activo == 1 ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-unchecked';
             
-            if($row->activo == 0)
+            if($puerto->activo == 0)
                 $encendido = "img/statusdisabled.png";
             
             echo '
               <div class="col-sm-6 col-md-4 ' . $disabled . '" style="width:230px;">
                 <div class="thumbnail">
                   <p>
-                  <div class="checkbox habilitado" puerto="'.$row->puerto.'">
+                  <div class="checkbox habilitado" puerto="'.$puerto->puerto.'">
                       <label>
                       <span class="' . $iconenabled . '" aria-hidden="true"></span>
                       Habilidado
                       </label>
                   </div>
                   </p>
-                  <img data-src="holder.js/171x80" alt="171x80" class="' . $row->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
+                  <img data-src="holder.js/171x80" alt="171x80" class="' . $puerto->puerto . '" src="' . $encendido . '" data-holder-rendered="true" style="height: 80px; width: 171px; display: block;">
                   <div class="caption">
-                    <p class="bg-info"><h4 id="thumbnail-label">' . $row->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4></p>
-                    <p><input type="checkbox" name="my-checkbox" class="checkboxes ' . $disabled . '" ' . $checked . ' id="' . $row->puerto . '" data-handle-width="60" ' . $disabled . '/></p>
+                    <p class="bg-info"><h4 id="thumbnail-label">' . $puerto->nombre . '<a class="anchorjs-link" href="#thumbnail-label"><span class="anchorjs-icon"></span></a></h4></p>
+                    <p><input type="checkbox" name="my-checkbox" class="checkboxes ' . $disabled . '" ' . $checked . ' id="' . $puerto->puerto . '" data-handle-width="60" ' . $disabled . '/></p>
                   </div>
                 </div>
               </div>';
 
         }
         echo '</div>';
-
-        $results->free();
-        $mysqli->close();
 
         ?>
       </div>
