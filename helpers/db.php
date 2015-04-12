@@ -1,10 +1,10 @@
 <?php
-
+require_once('./config/db_config.php');
 class db{
-    private $host = 'localhost';
-    private $username = 'root';
-    private $password = 'carlos2359';
-    private $database = 'myhome';
+    private $host = HOST;
+    private $username = USERNAME;
+    private $password = PASSWORD;
+    private $database = DATABASE;
     private $mysqli;
     
     
