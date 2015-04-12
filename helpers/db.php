@@ -30,6 +30,7 @@ class db{
          while($result = $exec->fetch_object()) {
             $results[] = $result;
          }
+        
         $exec->free();
         $this->mysqli->close();
         
@@ -80,6 +81,8 @@ class db{
                                 );
             }
         }
+        
+        $this->mysqli->close();
         
         return $result;
     }
