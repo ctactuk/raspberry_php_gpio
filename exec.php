@@ -1,14 +1,6 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$password = 'carlos2359';
-$database = 'myhome';
-
-$mysqli = new mysqli($host,$username,$password,$database);
-
-if ($mysqli->connect_error) {
-    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-}
+include 'controllers/puerto_controller.php';
+$puerto_cl = new puerto();
 
 if(isset($_POST['port']) && isset($_POST['cmd'])){
         $port = intval($_POST['port']);
@@ -17,17 +9,9 @@ if(isset($_POST['port']) && isset($_POST['cmd'])){
         $resultado = "";
         $return = exec('sudo python /home/pi/domotica/command.py ' . $port . ' ' . $cmd , $output);
     
-        $results = $mysqli->query("UPDATE puerto SET encendido={$estado} WHERE puerto = {$port}");
-    
-        $query = "UPDATE puerto SET encendido=? WHERE puerto=?";
+        $puertos = $puerto_cl->updatePuertos('puerto', array('puerto' => $port), array('encendido' => $estado));
 
-        if($results){
-            $resultado = "ok";
-        }else{
-            $resultado = "no_ok";
-        }
         echo json_encode($output);
-        //echo json_encode($port);
 }
 
 ?>
