@@ -35,6 +35,54 @@ class db{
         
         return $results;
     }
+    
+    public function update($table, $where = null, $values = null){
+        $where_update = '';
+        $set = '';
+        $update_query = '';
+        $result = array();
+        
+        if(!is_null($where) && is_array($where)){
+            $where_update .= ' where ';
+            $count = 0;
+            foreach($where as $key => $and){
+                $where_update .= $key . " = '{$and}'";
+                if(count($where) > 1 && $count < (count($where) -1)){
+                    $where_update .= ' and ';
+                }
+                $count ++;
+            }
+        }
+        
+        if(!is_null($values) && is_array($values)){
+            $set .= ' set ';
+            $count = 0;
+            foreach($values as $key => $value){
+                $set .= $key . " = '{$value}'";
+                if(count($values) > 1 && $count < (count($values) -1)){
+                    $set .= ", ";
+                }
+                $count ++;
+            }
+        }
+        
+        if($where_update != '' and $set != ''){
+            $update_query = "update {$table} {$set} {$where_update}";
+        }
+        
+        if($update_query != ''){
+            if($this->mysqli->query($update_query)){
+                $result = array('resultado'=>true);
+            }else{
+                 $result = array(
+                                 'resultado'=>false,
+                                 'error' => $this->mysqli->error
+                                );
+            }
+        }
+        
+        return $result;
+    }
 }
 
 ?>
