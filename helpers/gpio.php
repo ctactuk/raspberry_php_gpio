@@ -1,5 +1,5 @@
 <?php
-    include 'controllers/puerto_controller.php';
+    include './controllers/puerto_controller.php';
     
     class gpio{
         private $puerto_cl;
