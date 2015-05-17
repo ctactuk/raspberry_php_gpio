@@ -1,5 +1,4 @@
 <?php
-echo json_encode($_POST);
 //include 'config/app_config.php'
 //include 'controllers/puerto_controller.php';
 //$puerto_cl = new puerto();
