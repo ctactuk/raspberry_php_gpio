@@ -1,6 +1,6 @@
 <?php
 //include 'config/app_config.php'
-//include 'controllers/puerto_controller.php';
+include 'controllers/puerto_controller.php';
 //$puerto_cl = new puerto();
 
 if(isset($_POST['port']) && isset($_POST['cmd'])){
