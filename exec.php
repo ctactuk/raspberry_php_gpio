@@ -1,11 +1,11 @@
 <?php
 include 'config/app_config.php'
 include 'controllers/puerto_controller.php';
-require_once('config/constants.php');
-/*
+//require_once('config/constants.php');
+
 define('PATH_TO_SCRIPT','/home/pi/domotica/command.py');
 define('ROOT_PRIVILEGES','sudo');
-define('PYTHON_COMMAND','python');*/
+define('PYTHON_COMMAND','python');
 
 $puerto_cl = new puerto();
 
