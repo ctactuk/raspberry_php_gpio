@@ -13,7 +13,6 @@ if(isset($_POST['port']) && isset($_POST['cmd'])){
         $puertos = $puerto_cl->updatePuertos('puerto', array('puerto' => $port), array('encendido' => $estado));
 
         echo json_encode($output);
-        //echo json_encode($_POST);
 }
 
 ?>
