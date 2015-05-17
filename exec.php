@@ -7,7 +7,7 @@ define('PATH_TO_SCRIPT','/home/pi/domotica/command.py');
 define('ROOT_PRIVILEGES','sudo');
 define('PYTHON_COMMAND','python');
 */
-$puerto_cl = new puerto();
+//$puerto_cl = new puerto();
 
 if(isset($_POST['port']) && isset($_POST['cmd'])){
         $port = intval($_POST['port']);
