@@ -1,12 +1,7 @@
 <?php
 echo json_encode($_POST);
-include 'config/app_config.php'
+//include 'config/app_config.php'
 //include 'controllers/puerto_controller.php';
-/*
-define('PATH_TO_SCRIPT','/home/pi/domotica/command.py');
-define('ROOT_PRIVILEGES','sudo');
-define('PYTHON_COMMAND','python');
-*/
 //$puerto_cl = new puerto();
 
 if(isset($_POST['port']) && isset($_POST['cmd'])){
