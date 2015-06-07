@@ -2,3 +2,6 @@
 Raspberry PI GPIO using PHP.
 
 Actually is not currenly done.  Still working on it.
+
+Requirements:
+-Python
