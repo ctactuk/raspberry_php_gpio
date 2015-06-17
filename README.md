@@ -6,5 +6,9 @@ Actually is not currenly done.  Still working on it.
 Requirements:
   
   -Python.
+  
   -RaspBian.
+  
   -RPi.GPIO.
+  
+  -MySQL
