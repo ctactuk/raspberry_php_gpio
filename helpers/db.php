@@ -37,6 +37,32 @@ class db{
         return $results;
     }
     
+    public function insert($table, $rows = null){
+        $columns = '';
+        $values = '';
+        if(is_null($rows)){
+            return array('result' => false, 'error'=> 'no rows sent...!');
+        }else{
+            if(isset($rows['columns']) && is_array($rows['columns'])){
+                $columns = '('.implode(',',$rows['columns']).')';
+                if(isset($rows['values']) && is_array($rows['values'])){
+                    foreach($rows['values'] as $value){
+                        $values = '('.implode(',', $value['values']). ')';
+                        if($columns != '' && $values != ''){
+                            /*
+                            *@todo Write the insert here...!
+                            *@todo Try to batch insert...!
+                            */
+                            echo 'inserted rows';
+                        }
+                        $columns = '';
+                        $values = '';
+                    }
+                }
+            }        
+        }
+    }
+    
     public function update($table, $where = null, $values = null){
         $where_update = '';
         $set = '';
