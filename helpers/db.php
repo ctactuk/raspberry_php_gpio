@@ -44,20 +44,21 @@ class db{
             return array('result' => false, 'error'=> 'no rows sent...!');
         }else{
             if(isset($rows['columns']) && is_array($rows['columns'])){
-                $columns = '('.implode(',',$rows['columns']).')';
+                $columns = '(' . implode(',',$rows['columns']) . ')';
                 if(isset($rows['values']) && is_array($rows['values'])){
-                    foreach($rows['values'] as $value){
-                        $values = '('.implode(',', $value['values']). ')';
-                        if($columns != '' && $values != ''){
-                            /*
-                            *@todo Write the insert here...!
-                            *@todo Try to batch insert...!
-                            */
-                            echo 'inserted rows';
+                    $values = '(' . implode(',', $rows['values']) . ')';
+                    if($columns != '' && $values != ''){
+                        $query = "insert into {$table} {$columns} values {$values}";
+                        if($this->mysqli->query($query))
+                        {
+                            return array('resultado' => true, 'inserted_id' => $mysqli->insert_id);
                         }
-                        $columns = '';
-                        $values = '';
+                        else{
+                            return array('resultado' => false, 'error' => $this->mysqli->error);
+                        }
                     }
+                    $columns = '';
+                    $values = '';
                 }
             }        
         }
