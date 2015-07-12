@@ -1,49 +1,49 @@
 <?php
 class puerto_model{
-    private $id;
-    private $nombre;
-    private $puerto;
-    private $activo;
-    private $encendido;
+    private $_id;
+    private $_nombre;
+    private $_puerto;
+    private $_activo;
+    private $_encendido;
     
     public function getId() {
-        return $this->id;
+        return $this->_id;
     }
     
     public function setId($id){
-        $this->id = $id;
+        $this->_id = $id;
     }
     
     public function getNombre() {
-        return $this->nombre;
+        return $this->_nombre;
     }
     
     public function setNombre($nombre){
-        $this->nombre = $nombre;
+        $this->_nombre = $nombre;
     }
     
     public function getPuerto() {
-        return $this->puerto;
+        return $this->_puerto;
     }
     
-    public function setPuerto($puerto){
-        $this->puerto = $puerto;
+    public function setPuerto($_puerto){
+        $this->_puerto = $puerto;
     }
     
     public function getActivo() {
-        return $this->activo;
+        return $this->_activo;
     }
     
     public function setId($activo){
-        $this->activo = $activo;
+        $this->_activo = $activo;
     }
     
     public function getEncendido() {
-        return $this->encendido;
+        return $this->_encendido;
     }
     
     public function setEncendido($encendido){
-        $this->encendido = $encendido;
+        $this->_encendido = $encendido;
     }
 }
 
